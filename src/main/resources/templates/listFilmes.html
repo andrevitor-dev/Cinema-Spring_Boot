@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Filmes</title>
+    <link th:href="@{/css/estiloPaginaListagem.css}" rel="stylesheet" />
+    <style>
+        .topo-listagem {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .topo-listagem h2 {
+            margin: 0;
+            color: #d4af37;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="estiloBotaoLink">Voltar a Página Inicial</a>
+    <br /><br />
+
+    <div class="divMensagemSucesso" th:unless="${#strings.isEmpty(mensagemSucesso)}">
+        <span th:text="${mensagemSucesso}"></span>
+    </div>
+    <div class="divMensagemErro" th:unless="${#strings.isEmpty(mensagemErro)}">
+        <span th:text="${mensagemErro}"></span>
+    </div>
+
+    <div class="topo-listagem">
+        <h2>Listagem de Filmes</h2>
+        <a href="/filmes/novo" class="estiloBotaoLink">Cadastrar Filme</a>
+    </div>
+
+    <table class="tabela-listagem">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Data de Lançamento</th>
+                <th>Gênero</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="filme : ${filmes}">
+                <td th:text="${filme.idFilme}"></td>
+                <td th:text="${filme.titulo}"></td>
+                <td th:text="${filme.dataLancamento}"></td>
+                <td th:text="${filme.genero}"></td>
+                <td>
+
+                    <a th:href="@{/filmes/editar/{id}(id=${filme.idFilme})}" class="linkEditar">Editar</a>
+                    <a th:href="@{/filmes/excluir/{id}(id=${filme.idFilme})}" class="linkExcluir" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

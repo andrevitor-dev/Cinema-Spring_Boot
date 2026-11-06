@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Diretores</title>
+    <link th:href="@{/css/estiloPaginaListagem.css}" rel="stylesheet" />
+    <style>
+        .topo-listagem {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .topo-listagem h2 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="estiloBotaoLink">Voltar a Página Inicial</a>
+    <br /><br />
+
+    <div class="divMensagemSucesso" th:unless="${#strings.isEmpty(mensagemSucesso)}">
+        <span th:text="${mensagemSucesso}">
+    </div>
+    <div class="divMensagemErro" th:unless="${#strings.isEmpty(mensagemErro)}">
+        <span th:text="${mensagemErro}">
+    </div>
+
+    <div class="topo-listagem">
+        <h2>Listagem de Diretores</h2>
+        <a href="/diretores/novo" class="estiloBotaoLink">Cadastrar Diretor</a>
+    </div>
+
+    <table class="tabela-listagem">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Data de Nascimento</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>Nacionalidade</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="diretor : ${diretores}">
+                <td th:text="${diretor.idDiretor}"></td>
+                <td th:text="${diretor.nome}"></td>
+                <td th:text="${diretor.dataNascimento}"></td>
+                <td th:text="${diretor.email}"></td>
+                <td th:text="${diretor.telefone}"></td>
+                <td th:text="${diretor.nomeNacionalidade}"></td>
+                <td>
+                    <a th:href="@{/diretores/editar/{id}(id=${diretor.idDiretor})}" class="linkEditar">Editar</a>
+                    <a th:href="@{/diretores/excluir/{id}(id=${diretor.idDiretor})}" class="linkExcluir" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

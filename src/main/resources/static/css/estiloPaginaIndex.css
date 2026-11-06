@@ -1,0 +1,71 @@
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: #121214; 
+    color: #f0f0f2;
+    max-width: 650px; 
+    margin: 40px auto; 
+    padding: 30px; 
+}
+
+.header-index {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.header-index h2 {
+    color: #d4af37;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.header-index p {
+    color: #a0a0a8;
+    font-size: 0.95em;
+    margin: 0;
+}
+
+.secao-card {
+    background-color: #1a1a1e;
+    border-radius: 8px;
+    padding: 20px 25px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.secao-card h3 {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.estiloBotaoLink:link, .estiloBotaoLink:visited {
+    background-color: #d4af37;
+    color: #121214;
+    padding: 10px 18px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+}
+
+.estiloBotaoLink:hover, .estiloBotaoLink:active {
+    background-color: #b89628;
+}
+
+.baixo{
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #2a2a30;
+    text-align: center;
+}
+
+.baixo p{
+    color: #a0a0a8;
+    font-size: 0.85em;
+    margin: 0;
+    letter-spacing: 0.5px;
+}

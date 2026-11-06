@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Nacionalidades</title>
+    <link th:href="@{/css/estiloPaginaListagem.css}" rel="stylesheet" />
+    <style>
+        .topo-listagem {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .topo-listagem h2 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="estiloBotaoLink">Voltar a Página Inicial</a>
+    <br /><br />
+
+    <div class="divMensagemSucesso" th:unless="${#strings.isEmpty(mensagemSucesso)}">
+        <span th:text="${mensagemSucesso}">
+    </div>
+    <div class="divMensagemErro" th:unless="${#strings.isEmpty(mensagemErro)}">
+        <span th:text="${mensagemErro}">
+    </div>
+
+    <div class="topo-listagem">
+        <h2>Listagem de Nacionalidades</h2>
+        <a href="/nacionalidades/novo" class="estiloBotaoLink">Cadastrar Nacionalidade</a>
+    </div>
+
+    <table class="tabela-listagem">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="nacionalidade : ${nacionalidades}">
+                <td th:text="${nacionalidade.idNacionalidade}"></td>
+                <td th:text="${nacionalidade.nome}"></td>
+                <td>
+                    <a th:href="@{/nacionalidades/editar/{id}(id=${nacionalidade.idNacionalidade})}" class="linkEditar">Editar</a>
+                    <a th:href="@{/nacionalidades/excluir/{id}(id=${nacionalidade.idNacionalidade})}" class="linkExcluir" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

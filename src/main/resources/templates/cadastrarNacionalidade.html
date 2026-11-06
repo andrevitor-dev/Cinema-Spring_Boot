@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Nacionalidade</title>
+    <link th:href="@{/css/estiloPaginaForm.css}" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h2 th:text="${nacionalidade.idNacionalidade == null} ? 'Cadastro de Nacionalidade' : 'Editar Nacionalidade'">Cadastro de Nacionalidade</h2>
+        <form th:action="@{/nacionalidades}" th:object="${nacionalidade}" method="post">
+
+            <input type="hidden" th:field="*{idNacionalidade}" />
+
+            <div class="form-group">
+                <label for="nome">Nome da Nacionalidade:</label>
+                <input type="text" th:field="*{nome}" required placeholder="Ex: Brasileira">
+            </div>
+
+            <div class="botoes-form">
+                <input type="submit" value="Salvar">
+                <a href="/nacionalidades" class="btn-cancelar">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
